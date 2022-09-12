@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<h2 class="display-6 text-center mb-4">Create Student</h2>
+<div class="container mt-5 mb-5">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3 bg-light" th:method="POST" th:action="@{/students}" th:object="${student}">
+                    <div class="form-floating mb-3">
+                        <input name="name" type="text" th:field="*{name}" id="name" class="form-control">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="age" type="number" th:field="*{age}" id="age" class="form-control">
+                        <label for="age">Age</label>
+                    </div>
+                    <select name="group_id" id="group_id" class="form-select">
+                        <option selected>Select group</option>
+                        <option th:each="group : ${groups}" th:text="${group.name}" th:value="${group.id}"/>
+                    </select>
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <hr class="my-4">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

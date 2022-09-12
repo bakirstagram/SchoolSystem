@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Group</th>
+        <td>Info</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <div th:each="student : ${students}">
+        <tr>
+            <td><p th:text="${student.id}"/></td>
+            <td><p th:text="${student.name}"/></td>
+            <td><p th:text="${student.age}"/></td>
+            <td><p th:if="${student.groupp} != null" th:text="${student.groupp.name}"></p></td>
+            <td><a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-warning">See More</a> </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+
+
+
+</div>
+
+<nav aria-label="Page navigation example">
+<ul class="pagination" th:if="${students.totalPages > 0}">
+    <li class="page-item" th:each="page : ${numbers}" th:class="${page == students.number} ? active">
+        <a class="page-link" th:href="@{'/students?page=' + ${page}}" th:text="${page + 1}"></a>
+    </li>
+</ul>
+</nav>
+
+<a th:href="@{/students/create}" class="btn btn-success">create</a>
+</body>
+</html>

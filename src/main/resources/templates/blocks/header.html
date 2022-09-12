@@ -1,0 +1,13 @@
+<div th:fragment="header">
+    <div class="container" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;margin-bottom: 15px">
+        <header class="d-flex justify-content-center py-3" >
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/index" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a th:href="@{/students}" class="nav-link">Students</a></li>
+                <li class="nav-item"><a th:href="@{/teachers}" class="nav-link">Teachers</a></li>
+                <li class="nav-item"><a th:href="@{/books}" class="nav-link">Books</a></li>
+                <li class="nav-item"><a th:href="@{/groups}" class="nav-link">Groups</a></li>
+            </ul>
+        </header>
+    </div>
+</div>
